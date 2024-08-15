@@ -1,29 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Movies</title>
-</head>
-<body>
-    <header>
-
-    </header>
-    <main id="main">
-       <div class="movie">
-           <img src="https://media.istockphoto.com/id/1322104312/de/foto/freiheit-ketten-die-sich-in-v%C3%B6gel-verwandeln-charge-concept.jpg?s=1024x1024&w=is&k=20&c=0fQ9c4hQxBAgu8Lc3cUa828JyA8otvS03vLCEVUkWtw="
-            alt="image">
-            <div class="movie-info">
-                <h3>Movie Titel</h3>
-                <span class="green">9.8</span>
-            </div>
-            <div class="overview">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita aliquam officia hic? Ea officiis necessitatibus earum delectus mollitia accusantium aperiam.</p>
-            </div>
+    <!-- Linking TailwindCSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .autocomplete-active {
+        background-color: #e2e8f0; /* Light blue background to highlight */
+        color: #000000; /* Ensure text is visible */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Header section with navigation and search bar -->
+    <header class="bg-white shadow p-4">
+      <div class="max-w-7xl mx-auto flex justify-around items-center">
+        <!-- Navigation bar -->
+        <nav>
+          <ul class="flex p-2 space-x-2">
+            <li>
+              <a href="index.html" class="text-gray-700 hover:text-blue-500"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="journal.html" class="text-gray-700 hover:text-blue-500"
+                >Journal</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <!-- Search bar -->
+        <div class="relative">
+          <form id="searchForm" class="flex items-center">
+            <!-- Search input field -->
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search..."
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              autocomplete="off"
+            />
+            <!-- Search button -->
+            <button
+              type="submit"
+              class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg"
+            >
+              Search
+            </button>
+          </form>
+          <!-- Autocomplete dropdown that appears under the search input -->
+          <div
+            id="autocompleteDropdown"
+            class="absolute z-10 bg-white border border-gray-300 rounded-lg mt-2 w-full hidden"
+          ></div>
         </div>
+      </div>
+    </header>
 
-    </main>
+    <!-- Main section where movie cards will be displayed -->
+    <main
+      id="main"
+      class="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+    ></main>
+
+    <!-- Modal dialog for displaying search results -->
+    <div
+      id="searchModal"
+      class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div class="bg-white rounded-lg p-6 max-w-md w-full">
+        <h2 class="text-xl font-semibold mb-4">Search Results</h2>
+        <!-- Search results container; cards will be inserted here dynamically -->
+        <div id="searchResults" class="text-gray-700">
+          <!-- Search results will be dynamically inserted here -->
+        </div>
+        <!-- Close button for the modal -->
+        <button
+          id="closeModal"
+          class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Linking to the main JavaScript file -->
     <script src="assets/js/main.js"></script>
-</body>
+  </body>
 </html>
