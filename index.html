@@ -7,6 +7,12 @@
     <title>Movies</title>
     <!-- Linking TailwindCSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .autocomplete-active {
+        background-color: #e2e8f0; /* Light blue background to highlight */
+        color: #000000; /* Ensure text is visible */
+      }
+    </style>
   </head>
   <body class="bg-gray-100">
     <!-- Header section with navigation and search bar -->
@@ -28,14 +34,17 @@
           </ul>
         </nav>
         <!-- Search bar -->
-        <div>
+        <div class="relative">
           <form id="searchForm" class="flex items-center">
+            <!-- Search input field -->
             <input
               type="text"
               id="searchInput"
               placeholder="Search..."
               class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              autocomplete="off"
             />
+            <!-- Search button -->
             <button
               type="submit"
               class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-lg"
@@ -43,24 +52,11 @@
               Search
             </button>
           </form>
-          <!-- Modal dialog for search results -->
+          <!-- Autocomplete dropdown that appears under the search input -->
           <div
-            id="searchModal"
-            class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden"
-          >
-            <div class="bg-white rounded-lg p-6 max-w-md w-full">
-              <h2 class="text-xl font-semibold mb-4">Search Results</h2>
-              <p id="searchResults" class="text-gray-700">
-                Your search results will appear here.
-              </p>
-              <button
-                id="closeModal"
-                class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
-              >
-                Close
-              </button>
-            </div>
-          </div>
+            id="autocompleteDropdown"
+            class="absolute z-10 bg-white border border-gray-300 rounded-lg mt-2 w-full hidden"
+          ></div>
         </div>
       </div>
     </header>
@@ -70,6 +66,27 @@
       id="main"
       class="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
     ></main>
+
+    <!-- Modal dialog for displaying search results -->
+    <div
+      id="searchModal"
+      class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div class="bg-white rounded-lg p-6 max-w-md w-full">
+        <h2 class="text-xl font-semibold mb-4">Search Results</h2>
+        <!-- Search results container; cards will be inserted here dynamically -->
+        <div id="searchResults" class="text-gray-700">
+          <!-- Search results will be dynamically inserted here -->
+        </div>
+        <!-- Close button for the modal -->
+        <button
+          id="closeModal"
+          class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+        >
+          Close
+        </button>
+      </div>
+    </div>
 
     <!-- Linking to the main JavaScript file -->
     <script src="assets/js/main.js"></script>

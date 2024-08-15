@@ -1,11 +1,4 @@
-button[title="Add to Journal"]:hover::after {
-  content: "Add to Journal";
-  position: absolute;
-  top: -30px;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  white-space: nowrap;
+.autocomplete-active {
+  background-color: #e2e8f0; /* Light blue background to highlight */
+  color: #000000; /* Ensure text is visible */
 }
